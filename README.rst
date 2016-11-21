@@ -33,3 +33,7 @@ Documentation
 -------------
 
 http://torndb.readthedocs.org
+
+Change by Tsung 2016.11.21
+--------------------------
+Connection连接对象增加一个属性：last_executed, 用以获取最后一次执行的完整SQL，可以方便的查看、调试sql语句

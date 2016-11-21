@@ -200,6 +200,7 @@ class Connection(object):
             cursor.executemany(query, parameters)
             return cursor.lastrowid
         finally:
+            self.last_executed = cursor._last_executed
             cursor.close()
 
     def executemany_rowcount(self, query, parameters):
@@ -212,6 +213,7 @@ class Connection(object):
             cursor.executemany(query, parameters)
             return cursor.rowcount
         finally:
+            self.last_executed = cursor._last_executed
             cursor.close()
 
     update = delete = execute_rowcount
@@ -242,6 +244,8 @@ class Connection(object):
             logging.error("Error connecting to MySQL on %s", self.host)
             self.close()
             raise
+        finally:
+            self.last_executed = cursor._last_executed
 
 
 class Row(dict):
