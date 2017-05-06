@@ -6,6 +6,7 @@ Change by Tsung 2016.11.21
 Change by Tsung 2017.5.7
 --------------------------
 自定义字典escape格式，方便在update时进行格式转换。
+
 1. 使用示例
 
 ``` python
