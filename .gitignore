@@ -6,3 +6,4 @@
 .tox/
 MANIFEST
 doc/build/
+.idea/

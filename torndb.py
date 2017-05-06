@@ -269,6 +269,12 @@ if MySQLdb is not None:
     for field_type in field_types:
         CONVERSIONS[field_type] = [(FLAG.BINARY, str)] + CONVERSIONS[field_type]
 
+    # add by lidezheng 2017.5.7
+    def my_dict_escape(*args):
+        from _mysql import string_literal, escape_string
+        return ','.join(['%s=%s' % (escape_string(k), string_literal(v)) for k, v in args[0].items()])
+    CONVERSIONS[dict] = my_dict_escape
+
     # Alias some common MySQL exceptions
     IntegrityError = MySQLdb.IntegrityError
     OperationalError = MySQLdb.OperationalError
